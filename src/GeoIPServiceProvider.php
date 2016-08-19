@@ -1,9 +1,9 @@
 <?php
 
-namespace Codenexus\GeoIPlm;
+namespace Codenexus\GeoIP;
 
 use Illuminate\Support\ServiceProvider;
-use Codenexus\GeoIPlm\Console\Commands\UpdateCommand;
+use Codenexus\GeoIP\Console\Commands\UpdateCommand;
 
 class GeoIPServiceProvider extends ServiceProvider
 {

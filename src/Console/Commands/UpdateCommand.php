@@ -1,9 +1,9 @@
 <?php
 
-namespace Codenexus\GeoIPlm\Console\Commands;
+namespace Codenexus\GeoIP\Console\Commands;
 
 use Illuminate\Console\Command;
-use Codenexus\GeoIPlm\GeoIPUpdater;
+use Codenexus\GeoIP\GeoIPUpdater;
 
 class UpdateCommand extends Command
 {

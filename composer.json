@@ -5,7 +5,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Codenexus, LLC",
+            "name": "CodeNexus, LLC",
             "email": "help@codenexus.org"
         },
         {
@@ -14,16 +14,9 @@
             "role": "Developer"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
-        "geoip2/geoip2": "~2.0"
-    },
-    "require-dev": {
-
-    },
-    "autoload": {
-        "psr-4": {
-            "Codenexus\\GeoIPlm\\": "src"
-        }
+        "geoip2/geoip2": "^2.4"
     }
 }

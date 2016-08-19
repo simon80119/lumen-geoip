@@ -1,6 +1,6 @@
 <?php
 
-namespace Codenexus\GeoIPlm;
+namespace Codenexus\GeoIP;
 
 class GeoIPUpdater
 {
