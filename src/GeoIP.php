@@ -6,7 +6,7 @@ use GeoIp2\Database\Reader;
 
 class GeoIP {
 	/**
-	 * The client IP address
+	 * Client IP address.
 	 * 
 	 * @var float
 	 */
@@ -17,7 +17,7 @@ class GeoIP {
 	 */
 	public function __construct()
 	{
-		$this->ip = $this->getClientIp();
+		$this->client_ip = $this->getClientIP();
 	}
 
 	/**
@@ -29,7 +29,7 @@ class GeoIP {
 	 */
 	public function getLocation($ip = null)
 	{
-		// If no IP given set $ip to $this->client_ip
+		// If no IP given then get client IP 
 		if (! $ip) {
 			$ip = $this->getClientIp();
 		}
@@ -60,42 +60,38 @@ class GeoIP {
     }
 
     /**
-     * Gets the value of client_ip.
+     * Gets the client IP address.
      *
-     * @return mixed
+     * @return float
      */
-    public function getClientIp()
+    private function getClientIp()
     {
-        return $this->client_ip;
+    	if (getenv('HTTP_CLIENT_IP')) {
+        	$ipaddress = getenv('HTTP_CLIENT_IP');
+    	} elseif(getenv('HTTP_X_FORWARDED_FOR')) {
+        	$ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    	} elseif(getenv('HTTP_X_FORWARDED')) {
+        	$ipaddress = getenv('HTTP_X_FORWARDED');
+    	} elseif(getenv('HTTP_FORWARDED_FOR')) {
+        	$ipaddress = getenv('HTTP_FORWARDED_FOR');
+    	} elseif(getenv('HTTP_FORWARDED')) {
+        	$ipaddress = getenv('HTTP_FORWARDED');
+    	} elseif(getenv('REMOTE_ADDR')) {
+        	$ipaddress = getenv('REMOTE_ADDR');
+   		} else {
+   			$ipaddress = '127.0.0.1';
+   		}
+ 
+    	return $ipaddress;
     }
 
     /**
-     * Sets the value of client_ip to one of the values stored
-     * in an environmental variable
+     * Return client_ip.
      *
-     * @param mixed $client_ip
-     *
-     * @return self
+     * @return float
      */
-    private function setClientIp($client_ip)
+    public function getClientIp()
     {
-		$headerKeys = [
-			'HTTP_CLIENT_IP',
-			'HTTP_X_FORWARDED_FOR',
-			'HTTP_X_FORWARDED',
-			'HTTP_X_CLUSTER_CLIENT_IP',
-			'HTTP_FORWARDED_FOR',
-			'HTTP_FORWARDED',
-			'REMOTE_ADDR'
-		];
-
-		foreach($headerKeys as $key)
-	    {
-			if (env($key)) {
-	    		$this->client_ip = env($key);
-	    	}
-	    }
-
-        return $this;
+    	return $this->client_ip;
     }
 }

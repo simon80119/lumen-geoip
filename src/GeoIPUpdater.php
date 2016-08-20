@@ -26,5 +26,4 @@ class GeoIPUpdater
 
 		return $databasePath;
 	}
-
 }
