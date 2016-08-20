@@ -18,7 +18,7 @@ Next, open `bootstrap/app.php` and add under the Register Service Providers sect
 
 ```php
 ...
-$app->register(Codenexus\GeoIPlm\GeoIPServiceProvider::class);
+$app->register(Codenexus\GeoIP\GeoIPServiceProvider::class);
 ```
 
 ### Update MaxMind GeoLite2 City database
@@ -31,10 +31,10 @@ $ php artisan geoip:update
 
 ### Usage
 
-GeoIP will try to determine the IP using the following http headers: `HTTP_CLIENT_IP`, `HTTP_X_FORWARDED_FOR`, `HTTP_X_FORWARDED`, `HTTP_X_CLUSTER_CLIENT_IP`, `HTTP_FORWARDED_FOR`, `HTTP_FORWARDED`, `REMOTE_ADDR` in this order.  Optionally you can set an IP as the only paramater to set it.
+GeoIP will try to determine the IP using the following http headers: `HTTP_CLIENT_IP`, `HTTP_X_FORWARDED_FOR`, `HTTP_X_FORWARDED`, `HTTP_X_CLUSTER_CLIENT_IP`, `HTTP_FORWARDED_FOR`, `HTTP_FORWARDED`, `REMOTE_ADDR` in this order.  Optionally you can set an IP as the only parameter to set it.
 
 ```php
-$record = $app->geoip->getLocation('232.223.11.11');
+$record = app()->geoip->getLocation('232.223.11.11');
 
 print($record->country->isoCode . "\n"); // 'US'
 print($record->country->name . "\n"); // 'United States'
@@ -51,4 +51,11 @@ print($record->location->latitude . "\n"); // 44.9733
 print($record->location->longitude . "\n"); // -93.2323
 ```
 
+### Other Methods
 
+These methods are also available to use within your applications.
+
+```
+app()->geoip->checkIp($ip) // Checks IP to make sure IP is a valid IPv4 or IPv6 address and not within a private or reserved range
+app()->geoip->getClientIp() // Returns the detected client IP
+```
