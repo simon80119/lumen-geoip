@@ -1,6 +1,6 @@
 # GeoIP for Lumen
 
-[![Latest Stable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/stable)](https://packagist.org/packages/codenexus/lumen-geoip) [![Total Downloads](https://poser.pugx.org/codenexus/lumen-geoip/downloads)](https://packagist.org/packages/codenexus/lumen-geoip) [![Latest Unstable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/unstable)](https://packagist.org/packages/codenexus/lumen-geoip) [![License](https://poser.pugx.org/codenexus/lumen-geoip/license)](https://packagist.org/packages/codenexus/lumen-geoip)
+[![Latest Stable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/stable)](https://packagist.org/packages/codenexus/lumen-geoip) [![Total Downloads](https://poser.pugx.org/codenexus/lumen-geoip/downloads)](https://packagist.org/packages/codenexus/lumen-geoip) [![Latest Unstable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/unstable)](https://packagist.org/packages/codenexus/lumen-geoip) [![License](https://poser.pugx.org/codenexus/lumen-geoip/license)](https://packagist.org/packages/codenexus/lumen-geoip) [![StyleCI](https://styleci.io/repos/44153079/shield)](https://styleci.io/repos/44153079)
 
 Determine the geographical location of website visitors based on their IP addresses.
 
@@ -9,7 +9,7 @@ Determine the geographical location of website visitors based on their IP addres
 To install this package, just install through composer
 
 ```
-composer require codenexus/lumen-geoip
+$ composer require codenexus/lumen-geoip
 ```
 
 ### Providers
@@ -59,3 +59,12 @@ These methods are also available to use within your applications.
 app()->geoip->checkIp($ip) // Checks IP to make sure IP is a valid IPv4 or IPv6 address and not within a private or reserved range
 app()->geoip->getIp() // Returns the detected client IP
 ```
+
+## Change Log
+
+#### v2.0.0
+
+- Simplified namespace
+- Added Facade support
+- Added default location when in development
+- Fixed bug where detected IP was always blank
