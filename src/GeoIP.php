@@ -64,7 +64,7 @@ class GeoIP {
      *
      * @return float
      */
-    private function getClientIp()
+    protected function getClientIp()
     {
     	if (getenv('HTTP_CLIENT_IP')) {
         	$ipaddress = getenv('HTTP_CLIENT_IP');
@@ -90,7 +90,7 @@ class GeoIP {
      *
      * @return float
      */
-    public function getClientIp()
+    public function getIp()
     {
     	return $this->client_ip;
     }
