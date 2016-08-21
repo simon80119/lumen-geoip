@@ -55,7 +55,7 @@ print($record->location->longitude . "\n"); // -93.2323
 
 These methods are also available to use within your applications.
 
-```
+```php
 app()->geoip->checkIp($ip) // Checks IP to make sure IP is a valid IPv4 or IPv6 address and not within a private or reserved range
-app()->geoip->getClientIp() // Returns the detected client IP
+app()->geoip->getIp() // Returns the detected client IP
 ```
