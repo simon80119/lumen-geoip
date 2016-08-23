@@ -1,6 +1,6 @@
 # GeoIP for Lumen
 
-[![Latest Stable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/stable)](https://packagist.org/packages/codenexus/lumen-geoip) [![Total Downloads](https://poser.pugx.org/codenexus/lumen-geoip/downloads)](https://packagist.org/packages/codenexus/lumen-geoip) [![Latest Unstable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/unstable)](https://packagist.org/packages/codenexus/lumen-geoip) [![License](https://poser.pugx.org/codenexus/lumen-geoip/license)](https://packagist.org/packages/codenexus/lumen-geoip) [![StyleCI](https://styleci.io/repos/44153079/shield)](https://styleci.io/repos/44153079)
+[![Latest Stable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/stable)](https://packagist.org/packages/codenexus/lumen-geoip) [![Total Downloads](https://poser.pugx.org/codenexus/lumen-geoip/downloads)](https://packagist.org/packages/codenexus/lumen-geoip) [![Latest Unstable Version](https://poser.pugx.org/codenexus/lumen-geoip/v/unstable)](https://packagist.org/packages/codenexus/lumen-geoip) [![License](https://poser.pugx.org/codenexus/lumen-geoip/license)](https://packagist.org/packages/codenexus/lumen-geoip) [![composer.lock](https://poser.pugx.org/codenexus/lumen-geoip/composerlock)](https://packagist.org/packages/codenexus/lumen-geoip) [![StyleCI](https://styleci.io/repos/44153079/shield)](https://styleci.io/repos/44153079)
 
 Determine the geographical location of website visitors based on their IP addresses.
 
@@ -35,6 +35,7 @@ GeoIP will try to determine the IP using the following http headers: `HTTP_CLIEN
 
 ```php
 $record = app()->geoip->getLocation('232.223.11.11');
+$record = GeoIP::getLocation('232.223.11.11'); // If you have enabled facades
 
 print($record->country->isoCode . "\n"); // 'US'
 print($record->country->name . "\n"); // 'United States'
@@ -59,6 +60,25 @@ These methods are also available to use within your applications.
 app()->geoip->checkIp($ip) // Checks IP to make sure IP is a valid IPv4 or IPv6 address and not within a private or reserved range
 app()->geoip->getIp() // Returns the detected client IP
 ```
+
+### Example Data
+
+When an IP is not detected it will be set to 127.0.0.1 which will ultimately throw an Exception.  If you are not in production your record will default to the following data.
+
+```php
+array (
+    "ip"           => "232.223.11.11",
+    "isoCode"      => "US",
+    "country"      => "United States",
+    "city"         => "New Haven",
+    "state"        => "CT",
+    "postal_code"  => "06510",
+    "lat"          => 41.28,
+    "lon"          => -72.88,
+    "timezone"     => "America/New_York",
+    "continent"    => "NA",
+    "default"      => false
+);
 
 ## Change Log
 

@@ -14,11 +14,38 @@ class GeoIP
     protected $client_ip;
 
     /**
+     * Current environment.
+     *
+     * @var string
+     */
+    protected $environment;
+
+    /**
+     * Default location data.
+     *
+     * @var array
+     */
+    protected $default_record = array (
+        "ip"            => "127.0.0.1",
+        "isoCode"       => "US",
+        "country"       => "United States",
+        "city"          => "New Haven",
+        "state"         => "CT",
+        "postal_code"   => "06510",
+        "lat"           => 41.31,
+        "lon"           => -72.92,
+        "timezone"      => "America/New_York",
+        "continent"     => "NA",
+        "default"       => true,
+    );
+
+    /**
      * Create a new GeoIP instance.
      */
     public function __construct()
     {
         $this->client_ip = $this->getClientIP();
+        $this->environment = app()->environment();
     }
 
     /**
@@ -35,13 +62,18 @@ class GeoIP
             $ip = $this->getClientIp();
         }
 
-        // Check IP to make sure it is valid
-        if (! $this->checkIp($ip)) {
-            throw new \Exception('IP Address is either not a valid IPv4/IPv6 address or falls within the private or reserved ranges');
-        }
+        // if were not in production and ip is 127.0.0.1 use default record
+        if (($this->environment != 'production') && ($ip == '127.0.0.1')) {
+            return $record = $this->default_record;
+        } else {
+            // Check IP to make sure it is valid
+            if (! $this->checkIp($ip)) {
+                throw new \Exception('IP Address is either not a valid IPv4/IPv6 address or falls within the private or reserved ranges');
+            }
 
-        $reader = new Reader(storage_path('app/geoip.mmdb'));
-        $record = $reader->city($ip);
+            $reader = new Reader(storage_path('app/geoip.mmdb'));
+            $record = $reader->city($ip);
+        }
 
         return $record;
     }
