@@ -25,19 +25,19 @@ class GeoIP
      *
      * @var array
      */
-    protected $default_record = array (
-        "ip"            => "127.0.0.1",
-        "isoCode"       => "US",
-        "country"       => "United States",
-        "city"          => "New Haven",
-        "state"         => "CT",
-        "postal_code"   => "06510",
-        "lat"           => 41.31,
-        "lon"           => -72.92,
-        "timezone"      => "America/New_York",
-        "continent"     => "NA",
-        "default"       => true,
-    );
+    protected $default_record =  [
+        'ip'            => '127.0.0.1',
+        'isoCode'       => 'US',
+        'country'       => 'United States',
+        'city'          => 'New Haven',
+        'state'         => 'CT',
+        'postal_code'   => '06510',
+        'lat'           => 41.31,
+        'lon'           => -72.92,
+        'timezone'      => 'America/New_York',
+        'continent'     => 'NA',
+        'default'       => true,
+    ];
 
     /**
      * Create a new GeoIP instance.

@@ -61,7 +61,7 @@ app()->geoip->checkIp($ip) // Checks IP to make sure IP is a valid IPv4 or IPv6 
 app()->geoip->getIp() // Returns the detected client IP
 ```
 
-### Example Data
+### Default Location Data
 
 When an IP is not detected it will be set to 127.0.0.1 which will ultimately throw an Exception.  If you are not in production your record will default to the following data.
 
@@ -79,6 +79,7 @@ array (
     "continent"    => "NA",
     "default"      => false
 );
+```
 
 ## Change Log
 
