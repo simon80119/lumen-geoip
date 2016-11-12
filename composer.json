@@ -14,9 +14,14 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
         "geoip2/geoip2": "^2.4"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Codenexus\\GeoIP\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
 }
