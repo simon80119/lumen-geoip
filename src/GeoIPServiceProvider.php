@@ -2,8 +2,8 @@
 
 namespace Codenexus\GeoIP;
 
-use Illuminate\Support\ServiceProvider;
 use Codenexus\GeoIP\Console\Commands\UpdateCommand;
+use Illuminate\Support\ServiceProvider;
 
 class GeoIPServiceProvider extends ServiceProvider
 {
@@ -14,11 +14,11 @@ class GeoIPServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('geoip', function () {
-            return new GeoIP;
+            return new GeoIP();
         });
 
         $this->app->singleton('command.geoip.update', function () {
-            return new UpdateCommand;
+            return new UpdateCommand();
         });
 
         $this->commands(
