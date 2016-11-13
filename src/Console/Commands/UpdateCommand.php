@@ -2,8 +2,8 @@
 
 namespace Codenexus\GeoIP\Console\Commands;
 
-use Illuminate\Console\Command;
 use Codenexus\GeoIP\GeoIPUpdater;
+use Illuminate\Console\Command;
 
 class UpdateCommand extends Command
 {
@@ -35,7 +35,7 @@ class UpdateCommand extends Command
     {
         parent::__construct();
 
-        $this->updater = new GeoIPUpdater;
+        $this->updater = new GeoIPUpdater();
     }
 
     /**
@@ -47,7 +47,7 @@ class UpdateCommand extends Command
     {
         $result = $this->updater->update();
 
-        if (! $result) {
+        if (!$result) {
             $this->error('Update failed!');
 
             return;

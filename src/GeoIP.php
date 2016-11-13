@@ -25,7 +25,7 @@ class GeoIP
      *
      * @var array
      */
-    protected $default_record =  [
+    protected $default_record = [
         'ip'            => '127.0.0.1',
         'isoCode'       => 'US',
         'country'       => 'United States',
@@ -51,14 +51,14 @@ class GeoIP
     /**
      * Retrieve location data from database.
      *
-     * @param  float $ip
+     * @param float $ip
      *
      * @return object
      */
     public function getLocation($ip = null)
     {
         // If no IP given then get client IP
-        if (! $ip) {
+        if (!$ip) {
             $ip = $this->getClientIp();
         }
 
@@ -67,7 +67,7 @@ class GeoIP
             return $record = $this->default_record;
         } else {
             // Check IP to make sure it is valid
-            if (! $this->checkIp($ip)) {
+            if (!$this->checkIp($ip)) {
                 throw new \Exception('IP Address is either not a valid IPv4/IPv6 address or falls within the private or reserved ranges');
             }
 
@@ -82,7 +82,7 @@ class GeoIP
      * Checks IP to make sure it is a valid IPv4 or IPv6 address and
      * not within a private or reserved range.
      *
-     * @param  float $ip
+     * @param float $ip
      *
      * @return float|bool
      */
