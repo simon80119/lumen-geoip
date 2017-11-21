@@ -43,7 +43,7 @@ class UpdateCommand extends Command
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         $result = $this->updater->update();
 
@@ -54,5 +54,10 @@ class UpdateCommand extends Command
         }
 
         $this->info('New database file ('.$result.') installed');
+    }
+
+    public function fire()
+    {
+        $this->handle();
     }
 }
