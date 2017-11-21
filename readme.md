@@ -83,6 +83,10 @@ array (
 
 ## Change Log
 
+#### v3.0.0
+
+- Added support for Lumen 5.5
+
 #### v2.0.0
 
 - Simplified namespace
