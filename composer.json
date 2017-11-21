@@ -1,31 +1,35 @@
 {
-    "name": "code-orange/lumen-geoip",
-    "description": "GeoIP for Lumen",
-    "keywords": ["php", "lumen", "geoip"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tim van Dalen",
-            "email": "tim@code-orange.nl"
-        },
-        {
-            "name": "CodeNexus, LLC",
-            "email": "help@codenexus.org"
-        },
-        {
-            "name": "Jeremy Schaffer",
-            "email": "jeremys@codenexus.org",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.5.9",
-        "geoip2/geoip2": "^2.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "CodeOrange\\GeoIP\\": "src/"
-        }
-    },
-    "minimum-stability": "dev"
+	"name": "code-orange/lumen-geoip",
+	"description": "GeoIP for Lumen",
+	"keywords": [
+		"php",
+		"lumen",
+		"geoip"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Tim van Dalen",
+			"email": "tim@code-orange.nl"
+		},
+		{
+			"name": "CodeNexus, LLC",
+			"email": "help@codenexus.org"
+		},
+		{
+			"name": "Jeremy Schaffer",
+			"email": "jeremys@codenexus.org",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.5.9",
+		"geoip2/geoip2": "^2.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"CodeOrange\\GeoIP\\": "src/"
+		}
+	},
+	"minimum-stability": "dev"
 }
