@@ -1,9 +1,13 @@
 {
-    "name": "codenexus/lumen-geoip",
+    "name": "code-orange/lumen-geoip",
     "description": "GeoIP for Lumen",
-    "keywords": ["php", "codenexus", "lumen", "geoip"],
+    "keywords": ["php", "lumen", "geoip"],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Tim van Dalen",
+            "email": "tim@code-orange.nl"
+        },
         {
             "name": "CodeNexus, LLC",
             "email": "help@codenexus.org"
@@ -20,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Codenexus\\GeoIP\\": "src/"
+            "CodeOrange\\GeoIP\\": "src/"
         }
     },
     "minimum-stability": "dev"

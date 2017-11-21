@@ -1,8 +1,8 @@
 <?php
 
-namespace Codenexus\GeoIP;
+namespace CodeOrange\GeoIP;
 
-use Codenexus\GeoIP\Console\Commands\UpdateCommand;
+use CodeOrange\GeoIP\Console\Commands\UpdateCommand;
 use Illuminate\Support\ServiceProvider;
 
 class GeoIPServiceProvider extends ServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace Codenexus\GeoIP;
+namespace CodeOrange\GeoIP;
 
 use GeoIp2\Database\Reader;
 

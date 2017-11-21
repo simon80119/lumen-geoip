@@ -1,8 +1,8 @@
 <?php
 
-namespace Codenexus\GeoIP\Console\Commands;
+namespace CodeOrange\GeoIP\Console\Commands;
 
-use Codenexus\GeoIP\GeoIPUpdater;
+use CodeOrange\GeoIP\GeoIPUpdater;
 use Illuminate\Console\Command;
 
 class UpdateCommand extends Command
@@ -24,7 +24,7 @@ class UpdateCommand extends Command
     /**
      * Updater Object.
      *
-     * @var \Codenexus\GeoIPlm\GeoIPUpdater
+     * @var \CodeOrange\GeoIPlm\GeoIPUpdater
      */
     protected $updater;
 

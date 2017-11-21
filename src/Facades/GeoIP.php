@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeNexus\GeoIP\Facades;
+namespace CodeOrange\GeoIP\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
