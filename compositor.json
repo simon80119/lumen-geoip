@@ -1,0 +1,138 @@
+{
+  "name": "code-orange/lumen-geoip",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "Lumen GeoIP",
+  "branch": "master",
+  "style": {
+    "name": "Default",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/BannerHeader",
+      "article": "article/BasicArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "-apple-system, BlinkMacSystemFont, sans-serif",
+    "fontWeight": 400,
+    "bold": 600,
+    "lineHeight": 1.5,
+    "typeScale": [
+      72,
+      48,
+      24,
+      20,
+      16,
+      14,
+      12
+    ],
+    "monospace": "Menlo, monospace",
+    "heading": {
+      "fontFamily": null,
+      "fontStyle": null,
+      "fontWeight": 600,
+      "lineHeight": 1.25,
+      "textTransform": null,
+      "letterSpacing": null
+    },
+    "h0": {},
+    "h1": {},
+    "h2": {},
+    "h3": {},
+    "h4": {},
+    "h5": {},
+    "h6": {},
+    "alternativeText": {},
+    "space": [
+      0,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96
+    ],
+    "layout": {
+      "maxWidth": 1024,
+      "centered": false
+    },
+    "colors": {
+      "text": "#111",
+      "background": "#fff",
+      "primary": "#08e",
+      "secondary": "#059",
+      "highlight": "#e08",
+      "border": "#ddd",
+      "muted": "#eee"
+    },
+    "border": {
+      "width": 1,
+      "radius": 2
+    },
+    "link": {},
+    "button": {
+      "hover": {
+        "boxShadow": "inset 0 0 0 999px rgba(0, 0, 0, .125)"
+      }
+    },
+    "input": {},
+    "body": {
+      "margin": 0
+    },
+    "breakpoints": {
+      "xs": "@media screen and (max-width:40em)",
+      "sm": "@media screen and (min-width:40em)",
+      "md": "@media screen and (min-width:52em)",
+      "lg": "@media screen and (min-width:64em)"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/code-orange/lumen-geoip",
+          "text": "GitHub"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "lumen-geoip",
+      "subhead": "GeoIP for Lumen",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "lumen-geoip: GeoIP for Lumen",
+          "url": null
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "code-orange",
+          "repo": "lumen-geoip"
+        }
+      ]
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "<h1>GeoIP for Lumen</h1>\n<p><a href=\"https://packagist.org/packages/code-orange/lumen-geoip\"><img src=\"https://poser.pugx.org/code-orange/lumen-geoip/v/stable\"></a> <a href=\"https://packagist.org/packages/code-orange/lumen-geoip\"><img src=\"https://poser.pugx.org/code-orange/lumen-geoip/downloads\"></a> <a href=\"https://packagist.org/packages/code-orange/lumen-geoip\"><img src=\"https://poser.pugx.org/code-orange/lumen-geoip/license\"></a> <a href=\"https://packagist.org/packages/code-orange/lumen-geoip\"><img src=\"https://poser.pugx.org/code-orange/lumen-geoip/composerlock\"></a></p>\n<p>Determine the geographical location of website visitors based on their IP addresses.</p>\n<h2>Installation</h2>\n<p>To install this package, just install through composer</p>\n<pre>$ composer <span class=\"hljs-meta\">require</span> <span class=\"hljs-meta\">code</span>-orange/lumen-geoip</pre><h3>Providers</h3>\n<p>Next, open <code>bootstrap/app.php</code> and add under the Register Service Providers section:</p>\n<pre>...\n$app-&gt;register(CodeOrange\\GeoIP\\GeoIPServiceProvider::class);</pre><h3>Update MaxMind GeoLite2 City database</h3>\n<p>Run this on the command line from the root of your project:</p>\n<pre><span class=\"hljs-variable\">$ </span>php artisan <span class=\"hljs-symbol\">geoip:</span>update</pre><h3>Usage</h3>\n<p>GeoIP will try to determine the IP using the following http headers: <code>HTTP_CLIENT_IP</code>, <code>HTTP_X_FORWARDED_FOR</code>, <code>HTTP_X_FORWARDED</code>, <code>HTTP_X_CLUSTER_CLIENT_IP</code>, <code>HTTP_FORWARDED_FOR</code>, <code>HTTP_FORWARDED</code>, <code>REMOTE_ADDR</code> in this order.  Optionally you can set an IP as the only parameter to set it.</p>\n<pre>$record = app()-&gt;geoip-&gt;getLocation(<span class=\"hljs-string\">&apos;232.223.11.11&apos;</span>);\n$record = GeoIP::getLocation(<span class=\"hljs-string\">&apos;232.223.11.11&apos;</span>); <span class=\"hljs-comment\">// If you have enabled facades</span>\n\n<span class=\"hljs-keyword\">print</span>($record-&gt;country-&gt;isoCode . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;US&apos;</span>\n<span class=\"hljs-keyword\">print</span>($record-&gt;country-&gt;name . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;United States&apos;</span>\n<span class=\"hljs-keyword\">print</span>($record-&gt;country-&gt;names[<span class=\"hljs-string\">&apos;zh-CN&apos;</span>] . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;&#x7F8E;&#x56FD;&apos;</span>\n\n<span class=\"hljs-keyword\">print</span>($record-&gt;mostSpecificSubdivision-&gt;name . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;Minnesota&apos;</span>\n<span class=\"hljs-keyword\">print</span>($record-&gt;mostSpecificSubdivision-&gt;isoCode . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;MN&apos;</span>\n\n<span class=\"hljs-keyword\">print</span>($record-&gt;city-&gt;name . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;Minneapolis&apos;</span>\n\n<span class=\"hljs-keyword\">print</span>($record-&gt;postal-&gt;code . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// &apos;55455&apos;</span>\n\n<span class=\"hljs-keyword\">print</span>($record-&gt;location-&gt;latitude . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// 44.9733</span>\n<span class=\"hljs-keyword\">print</span>($record-&gt;location-&gt;longitude . <span class=\"hljs-string\">&quot;\\n&quot;</span>); <span class=\"hljs-comment\">// -93.2323</span></pre><h3>Other Methods</h3>\n<p>These methods are also available to use within your applications.</p>\n<pre>app()-&gt;geoip-&gt;checkIp($ip) <span class=\"hljs-comment\">// Checks IP to make sure IP is a valid IPv4 or IPv6 address and not within a private or reserved range</span>\napp()-&gt;geoip-&gt;getIp() <span class=\"hljs-comment\">// Returns the detected client IP</span></pre><h3>Default Location Data</h3>\n<p>When an IP is not detected it will be set to 127.0.0.1 which will ultimately throw an Exception.  If you are not in production your record will default to the following data.</p>\n<pre><span class=\"hljs-keyword\">array</span> (\n    <span class=\"hljs-string\">&quot;ip&quot;</span>           =&gt; <span class=\"hljs-string\">&quot;232.223.11.11&quot;</span>,\n    <span class=\"hljs-string\">&quot;isoCode&quot;</span>      =&gt; <span class=\"hljs-string\">&quot;US&quot;</span>,\n    <span class=\"hljs-string\">&quot;country&quot;</span>      =&gt; <span class=\"hljs-string\">&quot;United States&quot;</span>,\n    <span class=\"hljs-string\">&quot;city&quot;</span>         =&gt; <span class=\"hljs-string\">&quot;New Haven&quot;</span>,\n    <span class=\"hljs-string\">&quot;state&quot;</span>        =&gt; <span class=\"hljs-string\">&quot;CT&quot;</span>,\n    <span class=\"hljs-string\">&quot;postal_code&quot;</span>  =&gt; <span class=\"hljs-string\">&quot;06510&quot;</span>,\n    <span class=\"hljs-string\">&quot;lat&quot;</span>          =&gt; <span class=\"hljs-number\">41.28</span>,\n    <span class=\"hljs-string\">&quot;lon&quot;</span>          =&gt; <span class=\"hljs-number\">-72.88</span>,\n    <span class=\"hljs-string\">&quot;timezone&quot;</span>     =&gt; <span class=\"hljs-string\">&quot;America/New_York&quot;</span>,\n    <span class=\"hljs-string\">&quot;continent&quot;</span>    =&gt; <span class=\"hljs-string\">&quot;NA&quot;</span>,\n    <span class=\"hljs-string\">&quot;default&quot;</span>      =&gt; <span class=\"hljs-keyword\">false</span>\n);</pre><h2>Change Log</h2>\n<h4>v3.0.0</h4>\n<ul>\n<li>Added support for Lumen 5.5</li>\n</ul>\n<h4>v2.0.0</h4>\n<ul>\n<li>Simplified namespace</li>\n<li>Added Facade support</li>\n<li>Added default location when in development</li>\n<li>Fixed bug where detected IP was always blank</li>\n</ul>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/code-orange/lumen-geoip",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/code-orange",
+          "text": "code-orange"
+        }
+      ]
+    }
+  ]
+}
